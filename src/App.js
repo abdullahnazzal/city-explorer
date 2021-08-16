@@ -2,6 +2,7 @@ import './App.css';
 import React from 'react';
 import axios from 'axios';
 import CardInfo from './component/CardInfo';
+import Weather from './component/Weather';
 
 class App extends React.Component {
   constructor(props) {
@@ -9,7 +10,10 @@ class App extends React.Component {
     this.state = {
       cites: {},
       cite: "",
-      flag: false
+      flag: false,
+      lon:"",
+      lat:"",
+      data:""
     }
 
   }
@@ -20,17 +24,32 @@ class App extends React.Component {
     await this.setState({
       cite: e.target.cite.value
     })
-console.log("asdnasjdnaskd saofns"+process.env.REACT_APP_LOCATIONIQ_KEY);
+// console.log("asdnasjdnaskd saofns"+process.env.REACT_APP_LOCATIONIQ_KEY);
+
+
+
+//http://localhost:3001/weather?searchQuery=Seattle&lat=47.60621&lon=-122.33207
     let loc = `https://eu1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATIONIQ_KEY}&q=${this.state.cite}&format=json`;
 
-    let result = await axios.get(loc);
-    console.log(result.data[0]);
+    
 
-    this.setState({
+    let result = await axios.get(loc);
+    // console.log(result.data[0]);
+
+    await this.setState({
       cites: result.data[0],
+      lat:result.data[0].lat,
+      lon:result.data[0].lon,
       flag: true
     })
+    let loc2 = `http://localhost:3001/weather?searchQuery=${this.state.cite}&lat=${this.state.lat}&lon=${this.state.lon}`;
 
+    let result2 = await axios.get(loc2);
+    console.log(this.state.cite , this.state.lat, this.state.lon);
+    console.log("result2result2result2result2"+result2);
+    this.setState({
+      data:result2
+    })
   }
 
   render() {
@@ -49,6 +68,11 @@ console.log("asdnasjdnaskd saofns"+process.env.REACT_APP_LOCATIONIQ_KEY);
           cite={this.state.cite}
           flag={this.state.flag}
           
+          />
+
+          <Weather 
+          flag={this.state.flag}
+          info={this.state.data}
           />
           {/* {this.state.flag && <p>{this.state.cite} lat:{this.state.cites.lat} loc:{this.state.cites.lon}</p>} */}
         </>

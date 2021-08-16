@@ -34,3 +34,14 @@ Finish time: 6:30
 
 Actual time needed to complete: 3:30
 
+
+--------------------------------
+Name of feature: FrontEnd API
+
+Estimate of time needed to complete: 1 
+
+Start time: 6:30
+
+Finish time: 8:30
+
+Actual time needed to complete: 2
