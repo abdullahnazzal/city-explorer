@@ -10,12 +10,21 @@ class Weather extends React.Component {
         return (
             <div className="App">
                 <>
-                    {this.props.flag && <Card style={{ width: '18rem' }}>
-                        <Card.Body>
-                            <Card.Text>date: {this.props.info.data}</Card.Text>
-                            <Card.Text>description: {this.props.info.description}</Card.Text>
-                        </Card.Body>
-                    </Card>}
+                    {this.props.flag &&
+                        this.props.info.map((item,idx) => {
+                            
+                            return(
+                                
+                            <Card key={idx} style={{ width: '18rem' }}>
+                                <Card.Body>
+
+                                    <Card.Text>date: {item.date}</Card.Text>
+                                    <Card.Text>description: {item.description}</Card.Text>
+                                </Card.Body>
+                            </Card>
+                            )
+                        })
+                    }
 
                 </>
             </div>
