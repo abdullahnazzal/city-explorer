@@ -3,9 +3,6 @@ import { Card } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 class Movies extends React.Component {
-
-
-
     render() {
         return (
             <div className="App">
@@ -15,7 +12,6 @@ class Movies extends React.Component {
                             return (
                                 <Card key={idx} style={{ width: '18rem' }}>
                                     <Card.Body>
-
                                         <Card.Text>Title: {item.title}</Card.Text>
                                         <Card.Text>Overview: {item.overview}</Card.Text>
                                         <Card.Text>Average Votes: {item.average_votes}</Card.Text>
@@ -29,8 +25,6 @@ class Movies extends React.Component {
                                             }
                                         }
                                         } */}
-
-
                                         <Card.Text>Popularity: {item.popularity}</Card.Text>
                                         <Card.Text>Released On: {item.released_on}</Card.Text>
                                     </Card.Body>
@@ -44,6 +38,5 @@ class Movies extends React.Component {
         );
     }
 }
-
 
 export default Movies;
