@@ -1,12 +1,11 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import WeatherDay from './WeatherDay';
+import Movies from './Movies';
 
-class Weather extends React.Component {
-
+class Movie extends React.Component {
     render() {
         return (
-            <WeatherDay
+            <Movies
                 flag={this.props.flag}
                 info={this.props.info}
             />
@@ -14,5 +13,4 @@ class Weather extends React.Component {
     }
 }
 
-
-export default Weather;
+export default Movie;
